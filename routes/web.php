@@ -15,15 +15,12 @@ use App\Http\Controllers\ObjetosController;
 |
 */
 
-Route::get('/', function () {
-    return view('objetos.index');
-});
-
-
-Route::get('/home', function () {
-    return view('objetos.index');
-})->name('objetos');
+Route::get('/', [ObjetosController::class, 'index'])->name('objetos');
 
 Route::post('/loststuff', [ObjetosController::class, 'store'])->name('loststuff');
 
 Route::get('/loststuff', [ObjetosController::class, 'index'])->name('loststuff');
+
+Route::get('/loststuff/{id}', [ObjetosController::class, 'show'])->name('loststuff-edit');
+Route::patch('/loststuff/{id}', [ObjetosController::class, 'update'])->name('loststuff-update');
+Route::delete('/loststuff/{id}', [ObjetosController::class, 'destroy'])->name('loststuff-destroy');

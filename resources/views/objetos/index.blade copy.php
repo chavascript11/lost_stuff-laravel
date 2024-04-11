@@ -3,7 +3,6 @@
 @section('content')
 <div class="container w-50 border p-4 mt-4">
     <form action="{{ route('loststuff') }}" method="POST">
-
         @csrf
 
         @if (session('success'))
@@ -58,30 +57,5 @@
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-</div>
-
-<div class="container w-50 border p-4 mt-4">
-    <div >
-        @foreach ($objetos as $objeto)
-        <div class="row py-1">
-            <div class="col-md-9 d-flex align-items-center">
-                <a href="{{ route('loststuff-edit', [$objeto->id])}}">{{$objeto->object_name}}</a>
-            </div>
-
-            <div class="col-md-3 d-flex justify-content-end">
-                <form action="{{ route('loststuff-destroy', [$objeto->id])}}" method="POST">
-                    @method('DELETE')
-                    @csrf
-                    <button class="btn btn-danger btn-sm">Eliminar</button>
-                </form>
-            </div>
-        </div>
-        @endforeach
-    </div>
-
-    <div>
-
-    </div>
-
 </div>
 @endsection
